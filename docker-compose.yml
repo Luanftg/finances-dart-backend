@@ -1,0 +1,16 @@
+version: "3.3"
+services:
+  db:
+    image: mysql:5.7
+    container_name: mysqlfinances
+    volumes:
+      - /var/lib/mysql
+      - ./dump:/docker-entrypoint-initdb.d
+    restart: always
+    ports:
+      - 3308:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: finances
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
